@@ -31,9 +31,11 @@ class _AuthHandlerState extends State<AuthHandler> {
             SnackBar(content: Text(errorMessage)),
           );
         }
-        if(state1 is SignUpSuccess){
+        if (state1 is SignUpSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Registration Successfull! Please, Login to continue.")),
+            SnackBar(
+                content: Text(
+                    "Registration Successfull! Please, Login to continue.")),
           );
         }
       },
@@ -47,10 +49,16 @@ class _AuthHandlerState extends State<AuthHandler> {
           if (state is Authenticated) {
             return MyHomePage(title: '');
           }
-          if (state is SignUpInitial || state is SignUpError || state is SignUpLoading) {
+          if (state is SignUpInitial ||
+              state is SignUpError ||
+              state is SignUpLoading) {
             return SignUpScreen();
           }
-          if (state is UnAuthenticated || state is LoginError || state is LoginInitial || state is SignUpSuccess || state is LoginLoading) {
+          if (state is UnAuthenticated ||
+              state is LoginError ||
+              state is LoginInitial ||
+              state is SignUpSuccess ||
+              state is LoginLoading) {
             return LoginScreen();
           }
           return const Scaffold();
